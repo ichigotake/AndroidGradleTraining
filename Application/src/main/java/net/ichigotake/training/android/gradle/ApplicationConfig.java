@@ -1,14 +1,16 @@
 package net.ichigotake.training.android.gradle;
 
+/**
+ * {@link BuildConfig} への参照は、各所で直接せずにメソッド経由にしておくとよい
+ * そうしておくと、 {@link BuildConfig} を利用しない参照法への移行もスムーズになる
+ */
 public class ApplicationConfig {
 
     public static String getAuthorName() {
-        //TODO: ビルドする人によって切り替えたい
-        return "Taro";
+        return BuildConfig.AUTHOR_NAME;
     }
 
     public static boolean isDevelopmentMode() {
-        //TODO: ビルドの種類によって自動で切り替えたい
-        return true;
+        return BuildConfig.DEVELOPMENT;
     }
 }

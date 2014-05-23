@@ -9,6 +9,12 @@ android {
         targetSdkVersion 19
         versionCode 1
         versionName "1.0"
+
+        //buildConfigField: BuildConfigクラスにフィールドを追加する
+        // 引数がそのままソースファイルに展開されるため、
+        // 文字列の場合はクオートも埋め込まないとsyntax errorになる
+        buildConfigField "String", "AUTHOR_NAME", "\"${project.authorName}\""
+        buildConfigField "boolean", "DEVELOPMENT", "${project.development}"
     }
     buildTypes {
         release {

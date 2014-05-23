@@ -14,3 +14,22 @@ allprojects {
         mavenCentral()
     }
 }
+
+def writeDummyGradleProperties() {
+    def gradlePropsFile = file("gradle.properties")
+
+    if (!gradlePropsFile.exists()) {
+        def content = file("gradle.properties.example").readBytes()
+        gradlePropsFile.write(new String(content))
+
+
+        def props = new Properties()
+        props.load(new ByteArrayInputStream(content))
+        props.each { key, value ->
+            print "$key $value\n"
+            project.ext.set(key, value)
+        }
+    }
+}
+
+writeDummyGradleProperties()
